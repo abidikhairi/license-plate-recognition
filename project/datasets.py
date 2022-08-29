@@ -3,6 +3,7 @@ import torch as th
 import pandas as pd
 from PIL import Image
 from torch.utils.data import Dataset
+from project.utils import text_to_tensor
 
 
 class LicensePlateDetectionDataset(Dataset):
@@ -45,3 +46,34 @@ class LicensePlateDetectionDataset(Dataset):
             img = self.transform(img)
 
         return img, bbox
+
+
+class LicensePlateRecognitionDataset(Dataset):
+    def __init__(self, root_dir, metadata_file, transform=None) -> None:
+        super().__init__()
+
+        self.root_dir = root_dir
+        self.metadata = pd.read_csv(metadata_file)
+        self.transform = transform
+
+
+    def __len__(self) -> int:
+        return len(self.metadata)
+
+
+    def __getitem__(self, index):
+        if th.is_tensor(index):
+            index = index.tolist()
+            
+         
+        img_id = self.metadata.iloc[index, 0]
+        img_path = os.path.join(self.root_dir, img_id)
+        img = Image.open(img_path)
+        
+        text = self.metadata.iloc[index, 1]
+        seq = text_to_tensor(text)
+        
+        if self.transform:
+            img = self.transform(img)
+
+        return img, seq
