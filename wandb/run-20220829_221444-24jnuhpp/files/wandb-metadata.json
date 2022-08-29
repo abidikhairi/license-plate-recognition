@@ -1,0 +1,24 @@
+{
+    "os": "Linux-5.15.55-1-MANJARO-x86_64-with-glibc2.17",
+    "python": "3.8.13",
+    "heartbeatAt": "2022-08-29T20:14:50.880980",
+    "startedAt": "2022-08-29T20:14:44.184416",
+    "docker": null,
+    "gpu": "NVIDIA GeForce GTX 1650",
+    "gpu_count": 1,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "train_detector.py",
+    "codePath": "train_detector.py",
+    "git": {
+        "remote": "git@github.com:abidikhairi/license-plate-recognition.git",
+        "commit": "6e5608ce53877c49fed7df67f5637b3216bd9ea2"
+    },
+    "email": "abidikhairi.1337@gmail.com",
+    "root": "/home/flursky/Work/projects/license-plate-recognition",
+    "host": "khairi-81lk",
+    "username": "flursky",
+    "executable": "/home/flursky/.opt/miniconda/envs/dl/bin/python"
+}
